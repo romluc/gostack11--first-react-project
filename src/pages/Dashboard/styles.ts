@@ -117,7 +117,7 @@ export const Repositories = styled.div`
       border-radius: 50%;
     }
 
-    .text-container {
+    div {
       margin: 0 16px;
       flex: 1;
 
@@ -137,4 +137,8 @@ export const Repositories = styled.div`
       color: #cbcbd5;
     }
   }
+`;
+
+export const Bitmoji = styled.span`
+  color: #a8a8a8;
 `;

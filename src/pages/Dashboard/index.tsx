@@ -1,8 +1,9 @@
 import React, { useState, useEffect, FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 import logo from '../../assets/logo.svg';
-import { Title, Form, Repositories, Error } from './styles';
+import { Title, Form, Repositories, Error, Bitmoji } from './styles';
 
 interface Repository {
   full_name: string;
@@ -61,12 +62,13 @@ const Dashboard: React.FC = () => {
       <img src={logo} alt="Github Explorer logo" />
       <Title>
         Explore Github repos{' '}
-        <span
+        <Bitmoji
           role="img"
+          className="bitmoji-curlybraces"
           aria-label="bitmojis of eye looking through a telescope"
         >
-          🔭👀
-        </span>
+          {` { 🔭👀 } `}
+        </Bitmoji>
       </Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
@@ -82,18 +84,21 @@ const Dashboard: React.FC = () => {
 
       <Repositories>
         {repositories.map((repository) => (
-          <a href="teste" key={repository.full_name}>
+          <Link
+            to={`/repositories/${repository.full_name}`}
+            key={repository.full_name}
+          >
             <img
               src={repository.owner.avatar_url}
               alt={repository.owner.login}
             />
-            <div className="text-container">
+            <div>
               <strong>{repository.full_name}</strong>
               <p>{repository.description}</p>
             </div>
 
             <FiChevronRight size={20} />
-          </a>
+          </Link>
         ))}
       </Repositories>
     </>
