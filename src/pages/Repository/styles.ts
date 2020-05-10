@@ -59,12 +59,12 @@ export const RepositoryInfo = styled.section`
     li {
       strong {
         display: block;
-        font-size: 36px;
+        font-size: 24px;
         color: #3d3d4d;
       }
 
       & + li {
-        margin-left: 80px;
+        margin-left: 36px;
       }
 
       span {
@@ -79,6 +79,10 @@ export const RepositoryInfo = styled.section`
 export const Issues = styled.div`
   margin-top: 80px;
 
+  @media (max-width: 700px) {
+    margin-top: 54px;
+  }
+
   a {
     background: #fff;
     border-radius: 5px;
@@ -86,6 +90,7 @@ export const Issues = styled.div`
     width: 100%;
     display: block;
     text-decoration: none;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 2px 6px 0 rgba(0, 0, 0, 0.08);
 
     display: flex;
     align-items: center;
@@ -124,6 +129,7 @@ export const Loading = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60px;
-  color: rgba(0, 0, 0, 0.8);
+  margin-top: 30px;
+  font-size: 54px;
+  color: rgba(0, 0, 0, 0.3);
 `;

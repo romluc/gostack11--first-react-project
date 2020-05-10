@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import logo from '../../assets/logo.svg';
-import { Header, RepositoryInfo, Issues, Loading } from './styles';
 import api from '../../services/api';
+
+import logo from '../../assets/logo.svg';
+
+import { Header, RepositoryInfo, Issues, Loading } from './styles';
 
 interface RepositoryParams {
   repository: string;
@@ -27,6 +29,7 @@ interface Issue {
   user: {
     login: string;
   };
+  html_url: string;
 }
 
 const Repository: React.FC = () => {
@@ -87,14 +90,15 @@ const Repository: React.FC = () => {
       )}
 
       <Issues>
-        <Link to="asdf">
-          <div>
-            <strong>asdf</strong>
-            <p>asdf</p>
-          </div>
-
-          <FiChevronRight size={20} />
-        </Link>
+        {issues.map((issue) => (
+          <a key={issue.id} href={issue.html_url}>
+            <div>
+              <strong>{issue.title}</strong>
+              <p>{issue.user.login}</p>
+            </div>
+            <FiChevronRight size={20} />
+          </a>
+        ))}
       </Issues>
     </>
   );
