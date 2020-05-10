@@ -33,10 +33,21 @@ export const Form = styled.form<FormProps>`
       css`
         border: 1px solid tomato;
         border-right: 0;
+
+        @media (max-width: 700px) {
+          padding: 16px;
+          border-radius: 4px;
+          border: 1px solid tomato;
+        }
       `}
 
     &::placeholder {
       color: #a8a8b3;
+    }
+
+    @media (max-width: 700px) {
+      padding: 16px;
+      border-radius: 4px;
     }
   }
 
@@ -53,6 +64,19 @@ export const Form = styled.form<FormProps>`
     &:hover {
       background: ${shade(0.2, '#009090')};
     }
+
+    @media (max-width: 700px) {
+      height: 45px;
+      width: 100%;
+      padding: 4px;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 4px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
   }
 `;
 
