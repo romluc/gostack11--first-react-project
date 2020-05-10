@@ -119,3 +119,11 @@ export const Issues = styled.div`
     }
   }
 `;
+
+export const Loading = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: rgba(0, 0, 0, 0.8);
+`;

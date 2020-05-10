@@ -15,7 +15,7 @@ interface Repository {
 }
 
 const Dashboard: React.FC = () => {
-  const [newRepo, setNewRepo] = useState('');
+  const [newRepo, setNewRepo] = useState<string>('');
   const [inputError, setInputError] = useState('');
   const [repositories, setRepositories] = useState<Repository[]>(() => {
     const storedRepositories = localStorage.getItem(
@@ -43,6 +43,18 @@ const Dashboard: React.FC = () => {
 
     if (!newRepo) {
       setInputError(`Blank field. Enter author/repo's name.`);
+      return;
+    }
+
+    const repeatedRepo = repositories.find(
+      (repo) => repo.full_name === newRepo,
+    );
+    console.log(newRepo);
+    console.log(repeatedRepo);
+
+    if (repeatedRepo) {
+      setInputError(`Repository already on the list.`);
+      setNewRepo('');
       return;
     }
 
