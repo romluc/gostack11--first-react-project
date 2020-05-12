@@ -75,6 +75,30 @@ export const Form = styled.form<FormProps>`
     }
   }
 
+  .clear-storage {
+    width: 100px;
+    height: 70px;
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid #cc0000;
+    color: #333;
+    font-weight: bold;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: ${shade(0.1, '#cc0000')};
+    }
+
+    @media (max-width: 700px) {
+      height: 45px;
+      width: 100%;
+      padding: 4px;
+      border-radius: 4px;
+      text-align: center;
+      margin-top: 4px;
+    }
+  }
+
   @media (max-width: 700px) {
     flex-direction: column;
   }

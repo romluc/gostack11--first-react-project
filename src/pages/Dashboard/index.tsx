@@ -49,8 +49,6 @@ const Dashboard: React.FC = () => {
     const repeatedRepo = repositories.find(
       (repo) => repo.full_name === newRepo,
     );
-    console.log(newRepo);
-    console.log(repeatedRepo);
 
     if (repeatedRepo) {
       setInputError(`Repository already on the list.`);
@@ -69,6 +67,23 @@ const Dashboard: React.FC = () => {
     }
   }
 
+  const handleRemoveRepository = (repository: Repository) => {
+    const filteredArray = repositories.filter((arrayItem) => {
+      console.log('clicado');
+      return arrayItem !== repository;
+    });
+    setRepositories([...filteredArray]);
+    localStorage.setItem(
+      '@GithubExplorer:repositories',
+      JSON.stringify(repositories),
+    );
+  };
+
+  const handleClearLocalStorage = () => {
+    localStorage.clear();
+    setRepositories([]);
+  };
+
   return (
     <>
       <img src={logo} alt="Github Explorer logo" />
@@ -82,7 +97,6 @@ const Dashboard: React.FC = () => {
           {` { 🔭👀 } `}
         </Bitmoji>
       </Title>
-
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
         <input
           value={newRepo}
@@ -92,25 +106,34 @@ const Dashboard: React.FC = () => {
         <button type="submit">Search</button>
       </Form>
 
+      {repositories.length >= 1 && (
+        <button className="clear-storage" onClick={handleClearLocalStorage}>
+          Clear localStorage
+        </button>
+      )}
       {inputError && <Error>{inputError}</Error>}
-
       <Repositories>
         {repositories.map((repository) => (
-          <Link
-            to={`/repositories/${repository.full_name}`}
-            key={repository.full_name}
-          >
-            <img
-              src={repository.owner.avatar_url}
-              alt={repository.owner.login}
-            />
-            <div>
-              <strong>{repository.full_name}</strong>
-              <p>{repository.description}</p>
-            </div>
+          <>
+            <Link
+              to={`/repositories/${repository.full_name}`}
+              key={repository.full_name}
+            >
+              <img
+                src={repository.owner.avatar_url}
+                alt={repository.owner.login}
+              />
+              <div>
+                <strong>{repository.full_name}</strong>
+                <p>{repository.description}</p>
+              </div>
 
-            <FiChevronRight size={20} />
-          </Link>
+              <FiChevronRight size={20} />
+            </Link>
+            <button onClick={() => handleRemoveRepository(repository)}>
+              Remove
+            </button>
+          </>
         ))}
       </Repositories>
     </>
