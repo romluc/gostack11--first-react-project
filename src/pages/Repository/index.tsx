@@ -5,7 +5,13 @@ import api from '../../services/api';
 
 import logo from '../../assets/logo.svg';
 
-import { Header, RepositoryInfo, Issues, Loading } from './styles';
+import {
+  Header,
+  RepositoryInfo,
+  Issues,
+  Loading,
+  EmptyIssuesSection,
+} from './styles';
 
 interface RepositoryParams {
   repository: string;
@@ -89,17 +95,23 @@ const Repository: React.FC = () => {
         <Loading>Loading...</Loading>
       )}
 
-      <Issues>
-        {issues.map((issue) => (
-          <a key={issue.id} href={issue.html_url}>
-            <div>
-              <strong>{issue.title}</strong>
-              <p>{issue.user.login}</p>
-            </div>
-            <FiChevronRight size={20} />
-          </a>
-        ))}
-      </Issues>
+      {issues.length ? (
+        <Issues>
+          {issues.map((issue) => (
+            <a key={issue.id} href={issue.html_url}>
+              <div>
+                <strong>{issue.title}</strong>
+                <p>{issue.user.login}</p>
+              </div>
+              <FiChevronRight size={20} />
+            </a>
+          ))}
+        </Issues>
+      ) : (
+        <EmptyIssuesSection>
+          No issues in this repo <span>🤷🏻‍♀️</span>
+        </EmptyIssuesSection>
+      )}
     </>
   );
 };

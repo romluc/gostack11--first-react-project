@@ -49,6 +49,26 @@ export const RepositoryInfo = styled.section`
         margin-top: 4px;
       }
     }
+
+    @media (max-width: 400px) {
+      img {
+        width: 80px;
+        height: 80px;
+      }
+
+      div {
+        strong {
+          font-size: 24px;
+          color: #3d3d4d;
+        }
+
+        p {
+          font-size: 18px;
+          color: #737380;
+          margin-top: 4px;
+        }
+      }
+    }
   }
 
   ul {
@@ -132,4 +152,23 @@ export const Loading = styled.p`
   margin-top: 30px;
   font-size: 54px;
   color: rgba(0, 0, 0, 0.3);
+`;
+
+export const EmptyIssuesSection = styled.p`
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  place-content: center;
+  margin-top: 60px;
+  font-size: 42px;
+  color: rgba(0, 0, 0, 0.5);
+
+  span {
+    color: #222;
+    margin: 5px;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 36px;
+  }
 `;

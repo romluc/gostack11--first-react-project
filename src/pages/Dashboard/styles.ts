@@ -5,13 +5,24 @@ interface FormProps {
   hasError: boolean;
 }
 
-export const Title = styled.h1`
-  font-size: 48px;
-  color: #3a3a3a;
-  text-align: center;
-  max-width: 450px;
-  line-height: 56px;
-  margin-top: 80px;
+export const Header = styled.div`
+  margin-top: 40px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 48px;
+    color: #3a3a3a;
+    text-align: left;
+    max-width: 350px;
+    line-height: 50px;
+  }
+
+  span {
+    color: #a8a8a8;
+    font-size: 36px;
+  }
 `;
 
 export const Form = styled.form<FormProps>`
@@ -73,32 +84,36 @@ export const Form = styled.form<FormProps>`
       text-align: center;
       margin-top: 4px;
     }
-  }
 
-  .clear-storage {
-    width: 100px;
-    height: 70px;
-    background: transparent;
-    border-radius: 5px;
-    border: 2px solid #cc0000;
-    color: #333;
-    font-weight: bold;
-    transition: background-color 0.2s;
+    & + button {
+      width: auto;
+      height: 70px;
+      padding: 10px;
+      margin-left: 5px;
+      background: transparent;
+      border-radius: 5px;
+      border: 2px solid #f44336;
+      color: rgba(0, 0, 0, 0.4);
+      /* background-color: rgba(0, 0, 0, 0.07); */
+      font-weight: bold;
+      transition: background-color 0.2s;
 
-    &:hover {
-      background: ${shade(0.1, '#cc0000')};
+      &:hover {
+        color: rgba(250, 250, 250, 0.9);
+        background-color: #f44336;
+      }
+
+      @media (max-width: 700px) {
+        height: 45px;
+        width: 100%;
+        padding: 4px;
+        border-radius: 4px;
+        text-align: center;
+        margin-top: 4px;
+        margin-left: 0;
+      }
     }
-
-    @media (max-width: 700px) {
-      height: 45px;
-      width: 100%;
-      padding: 4px;
-      border-radius: 4px;
-      text-align: center;
-      margin-top: 4px;
-    }
   }
-
   @media (max-width: 700px) {
     flex-direction: column;
   }
@@ -124,6 +139,10 @@ export const Repositories = styled.div`
     display: block;
     text-decoration: none;
 
+    @media (max-width: 400px) {
+      padding: 10px;
+    }
+
     display: flex;
     align-items: center;
 
@@ -146,7 +165,7 @@ export const Repositories = styled.div`
       flex: 1;
 
       strong {
-        font-size: 20px;
+        font-size: 24px;
         color: #3d3d4d;
       }
 
@@ -161,8 +180,4 @@ export const Repositories = styled.div`
       color: #cbcbd5;
     }
   }
-`;
-
-export const Bitmoji = styled.span`
-  color: #a8a8a8;
 `;

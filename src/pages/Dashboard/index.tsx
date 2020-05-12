@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 import logo from '../../assets/logo.svg';
-import { Title, Form, Repositories, Error, Bitmoji } from './styles';
+import { Form, Repositories, Error, Header } from './styles';
 
 interface Repository {
   full_name: string;
@@ -60,6 +60,7 @@ const Dashboard: React.FC = () => {
       const response = await api.get<Repository>(`/repos/${newRepo}`);
       const repository = response.data;
       setRepositories([...repositories, repository]);
+
       setNewRepo('');
       setInputError('');
     } catch (err) {
@@ -69,7 +70,6 @@ const Dashboard: React.FC = () => {
 
   const handleRemoveRepository = (repository: Repository) => {
     const filteredArray = repositories.filter((arrayItem) => {
-      console.log('clicado');
       return arrayItem !== repository;
     });
     setRepositories([...filteredArray]);
@@ -87,16 +87,15 @@ const Dashboard: React.FC = () => {
   return (
     <>
       <img src={logo} alt="Github Explorer logo" />
-      <Title>
-        Explore Github repos{' '}
-        <Bitmoji
+      <Header>
+        <h1>Explore Github repos </h1>
+        <span
           role="img"
-          className="bitmoji-curlybraces"
           aria-label="bitmojis of eye looking through a telescope"
         >
           {` { 🔭👀 } `}
-        </Bitmoji>
-      </Title>
+        </span>
+      </Header>
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>
         <input
           value={newRepo}
@@ -104,14 +103,13 @@ const Dashboard: React.FC = () => {
           placeholder="Enter repo name"
         />
         <button type="submit">Search</button>
+        {repositories.length ? (
+          <button onClick={handleClearLocalStorage}>Clear List</button>
+        ) : null}
       </Form>
 
-      {repositories.length >= 1 && (
-        <button className="clear-storage" onClick={handleClearLocalStorage}>
-          Clear localStorage
-        </button>
-      )}
       {inputError && <Error>{inputError}</Error>}
+
       <Repositories>
         {repositories.map((repository) => (
           <>
