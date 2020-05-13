@@ -109,7 +109,10 @@ const Repository: React.FC = () => {
         </Issues>
       ) : (
         <EmptyIssuesSection>
-          No issues in this repo <span>🤷🏻‍♀️</span>
+          No issues in this repo{' '}
+          <span role="img" aria-label="shrug shoulders">
+            🤷🏻‍♀️
+          </span>
         </EmptyIssuesSection>
       )}
     </>

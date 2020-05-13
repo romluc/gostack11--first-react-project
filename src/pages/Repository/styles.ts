@@ -52,8 +52,8 @@ export const RepositoryInfo = styled.section`
 
     @media (max-width: 400px) {
       img {
-        width: 80px;
-        height: 80px;
+        width: 40px;
+        height: 40px;
       }
 
       div {

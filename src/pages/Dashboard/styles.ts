@@ -127,6 +127,22 @@ export const Error = styled.span`
   font-size: 14px;
 `;
 
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: 10px;
+    font-size: 30px;
+    color: #c53030;
+  }
+
+  &:hover {
+    cursor: pointer;
+    font-size: 25px;
+  }
+`;
+
 export const Repositories = styled.div`
   margin-top: 80px;
   max-width: 700px;
@@ -139,6 +155,8 @@ export const Repositories = styled.div`
     display: block;
     text-decoration: none;
 
+    margin-top: 16px;
+
     @media (max-width: 400px) {
       padding: 10px;
     }
@@ -146,12 +164,9 @@ export const Repositories = styled.div`
     display: flex;
     align-items: center;
 
-    & + a {
-      margin-top: 16px;
-    }
-
     &:hover {
-      transform: translateX(10px);
+      transform: translateX(2px);
+      transition: 0.1s ease;
     }
 
     img {
@@ -167,12 +182,20 @@ export const Repositories = styled.div`
       strong {
         font-size: 24px;
         color: #3d3d4d;
+
+        @media (max-width: 400px) {
+          font-size: 22px;
+        }
       }
 
       p {
         margin-top: 4px;
         color: #a8a8a8;
         font-size: 18px;
+
+        @media (max-width: 400px) {
+          font-size: 16px;
+        }
       }
     }
     svg {
