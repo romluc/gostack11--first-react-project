@@ -1,4 +1,4 @@
-<h1 align="center">Github Explorer 👋</h1>
+<h1 align="center">Github Explorer 🔭:octocat:</h1>
 
 ## Project using TypeScript / React Hooks and Axios to retrieve data from Github API and list repo's issues
 
